@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css')}}">
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .titulo {
+            flex-basis: 40%;
+            text-align: left;
+        }
+
+        .autor {
+            flex-basis: 40%;
+            text-align: left;
+        }
+
+        .ano_publicacao {
+            flex-basis: 10%;
+            text-align: right;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-container form,
+        .btn-container a {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Receitas</h1>
+    <div class="messages">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <ul>
+        <li>
+            <span class="nome">Nome</span>
+            <span class="valor">valor</span>
+            <span class="data">Data</span>
+            <span class="editar"></span>
+            <span class="deletar"></span>
+        </li>
+
+        {% for receitas in rece %}
+            <li>
+                <span class="nome">{{ receitas['nome'] }}</span>
+                <span class="valor">{{ receitas['valor'] }}</span>
+                <span class="data">{{ receitas['Data'] }}</span>
+                <span>&nbsp;</span>
+                <span class="deletar"><a href="{{ url_for('deletarRece', id=receitas.id_receitas)}}">Excluir</a></span>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
