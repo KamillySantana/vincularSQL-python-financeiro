@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css')}}">
+</head>
+<body>
+    <div class="btn-container">
+        {% if session['id'] %}
+            <form action="{{ url_for('logout') }}" method="post">
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        {% else %}
+            <form action="{{ url_for('login_form') }}">
+                <button type="submit" class="btn btn-danger">Login</button>
+            </form>
+        {% endif %}
+
+        <form action="{{ url_for('index') }}">
+            <button type="submit" class="btn btn-danger">Home</button>
+        </form>
+
+        <a href="{{ url_for('novoRece') }}" class="btn btn-primary">Cadastrar Receita</a>
+        <a href="{{ url_for('novoDespe') }}" class="btn btn-primary">Cadastrar Despesa</a>
+        <a href="{{ url_for('novoGuar') }}" class="btn btn-primary">Cadastrar Guardar</a>
+    </div>
+
+    <h1>CASHTECH</h1>
+    <div class="messages">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div>
+        <p>Saldo Total: </p>
+        <p>{{ total_receitas - total_despesas - total_guardar }}</p>
+    </div>
+
+    <div>
+        <p>Receitas: </p>
+        <p>{{ total_receitas }}</p>
+
+        <p>Despesas: </p>
+        <p>{{ total_despesas }}</p>
+
+        <p>Guardar: </p>
+        <p>{{ total_guardar }}</p>
+    </div>
+
+</body>
+</html>
