@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css')}}">
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+
+    </style>
+</head>
+<body class="tela">
+
+    <div class="headerHomeCor">
+
+        <div class="headerHome">
+            <div class="logoHome">
+                <img src="../static/img/logo.png">
+                <h1>CASHTECH</h1>
+            </div>
+            <div class="total">
+                <p>Saldo Total:</p>
+                <p>{{ total_receitas - total_despesas - total_guardar }}</p>
+            </div>
+        </div>
+
+         <div class="navegar">
+            {% if session['id'] %}
+                <form action="{{ url_for('logout') }}" method="post">
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
+            {% else %}
+                <form action="{{ url_for('login_form') }}">
+                    <button type="submit" class="btn btn-danger">Login</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <div>
+
+    </div>
+
+
+    <div class="receitas-despesas-container">
+        <div class="receitas">
+            <form action="{{ url_for('novoRece') }}">
+                <button type="submit" class="btn btn-primary">
+                    <p>Receitas:</p>
+                    <p>{{ total_receitas }}</p>
+                </button>
+            </form>
+        </div>
+        <div class="despesas">
+            <form action="{{ url_for('novoDespe') }}">
+                <button type="submit" class="btn btn-primary">
+                    <p>Despesas:</p>
+                    <p>{{ total_despesas }}</p>
+                </button>
+            </form>
+        </div>
+        <div class="guardar">
+            <form action="{{ url_for('novoGuar') }}">
+                <button type="submit" class="btn btn-primary">
+                    <p>Guardar:</p>
+                    <p>{{ total_guardar }}</p>
+                </button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

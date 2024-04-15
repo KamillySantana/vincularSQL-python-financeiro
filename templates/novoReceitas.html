@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Novo Livro</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css')}}">
+      <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- =============HEADER============ -->
+        <div class="header">
+            <div>
+                <img class="imgLogo" src="../static/img/logo.png">
+                <h1 class="texto">CASHTECH</h1>
+            </div>
+
+            <div>
+                <a href="{{ url_for('index') }}" class="btn btn-primary"><img class="imgCasinha" src="../static/img/casinha.png"></a>
+            </div>
+        </div>
+
+        <!-- =============EXIBIR RECEITAS============ -->
+
+        <div class="divzona">
+            <div>
+                <div class="receitaView">
+                    <img class="imgSeta" src="../static/img/setinhaVerde.png">
+                    <div>
+                        <p>Receitas: </p>
+                        <p>{{ total_receitas }}</p>
+                    </div>
+                </div>
+
+                <div class="divzinha">
+                    {% for receitas in rece %}
+                        <div class="receitas">
+                            <div>
+                                <span>&nbsp;</span>
+                                <span class="deletar"><a href="{{ url_for('deletarRece', id=receitas.id_receitas)}}"><img class="imgLixo" src="../static/img/lixo1.png"></a></span>
+                            </div>
+
+                            <div class="receitas2">
+                                <div>
+                                    <span>Nome: {{ receitas['nome'] }}</span>
+                                </div>
+
+                                <div>
+                                    <span>Valor: R${{ receitas['valor'] }}</span>
+                                </div>
+
+                                <span>Data: {{ receitas['data'] }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ==============CADASTRAR RECEITAS============= -->
+
+            <div class="inputs">
+                <div class="page-header">
+                    <h2>{{titulo}}</h2>
+                </div>
+
+                <form action="{{ url_for('criarRece') }}" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                      <label for="nome">Nome:</label>
+                      <input type="text" id="nome" name="nome" class="form-control" placeholder="Salario" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="valor">Valor:</label>
+                      <input type="text" id="valor" name="valor" class="form-control" placeholder="3000" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="data">Data:</label>
+                      <input type="date" id="data" name="data" class="form-control"  required>
+                    </div>
+
+                    <button type="submit" class="botaoSalvar">Salvar</button>
+                </form>
+            </div>
+        </div>
+      </div>
+
+</body>
+</html>
