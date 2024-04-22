@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: white
+}
+
+.header {
+    background-color: #3D3C3C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.header div {
+    display: flex;
+    align-items: center;
+}
+
+.texto {
+    margin-left: 15px;
+    color: #fff;
+}
+
+.imgLogo {
+    width: 60px;
+    height: 60px;
+}
+
+.imgCasinha {
+    width: 30px;
+    height: 30px;
+}
+
+.receitaView {
+    display: flex;
+    background-color: #312F2F;
+    border-radius: 20px;
+    padding: 20px;
+    flex-direction: row;
+    align-items: center;
+    color: #fff;
+    width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px
+}
+
+.imgSeta{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.receitas {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    background-color: #3D3C3C;
+    border-radius: 20px;
+    padding: 10px;
+    width: 300px;
+    margin: 10px
+}
+
+.receitas2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    color: #fff
+}
+
+.imgLixo {
+    width: 20px;
+    height: 20px;
+}
+
+.divzinha{
+    background-color: #312F2F;
+    padding: 20px;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.divzona{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.inputs{
+    background-color: #312F2F;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 20px;
+    color: #fff
+}
+
+.form-control {
+    background-color: #3D3C3C;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box; /* Garante que o padding não aumente a largura do input */
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.botaoSalvar{
+    background-color: #cfffca;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.botaoSalvar:hover {
+    background-color: #77dd77;
+}
+
+
+/*==========================HOME===========================*/
+
+.headerHome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.logoHome {
+    display: flex;
+    align-items: center;
+    gap: 30px
+}
+
+.headerHomeCor {
+    background-color: #3D3C3C;
+}

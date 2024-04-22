@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #000;
+            padding: 0;
+            margin: 0;
+        }
+
+        .centro {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            color: #fff;
+        }
+
+        .imgLogo{
+            width: 140px;
+            height: 140px;
+        }
+
+        .divzinha {
+            width: 400px;
+            height: 350px;
+            margin: 60px auto;
+            padding: 20px;
+            background-color: #3D3C3C;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            color: #fff;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #283A37;
+            border-radius: 5px;
+            background-color: #312F2F;
+            color: #fff;
+        }
+
+        input[type="submit"] {
+            width: 200px;
+            cursor: pointer;
+            background-color: transparent;
+            border-radius: 10px;
+            border: 2px solid #5086c1;
+            color: #5086c1;
+            padding: 10px 15px;
+
+            transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+
+            margin-left: 95px;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        input[type="submit"]:hover {
+            color: white;
+            box-shadow: 0 0 40px 40px #3065ac inset;
+        }
+
+        .texto {
+            font-size: 20px;
+        }
+
+        .imgLogin {
+            width: 600px;
+            height: 500px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="centro">
+        <img class="imgLogo" src="static/img/logo.png" alt="">
+        <h1>CASHTECH</h1>
+    </div>
+
+    <div class="divzona">
+        <div class="divzinha">
+
+            <div class="messages">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <form action="{{ url_for('criar_user') }}" method="post">
+                <input type="text" name="nome" placeholder="Nome" required><br>
+                <input type="text" name="email" placeholder="Email" required><br>
+                <input type="password" name="senha" placeholder="Senha" required><br><br>
+                <input type="submit" value="Cadastrar">
+            </form>
+            <p>Já tem uma conta? <a href="{{ url_for('login_form') }}">Faça login</a></p>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
